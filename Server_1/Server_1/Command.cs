@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.Json;
 using System.Web;
-us
+
 namespace Client
 {
     class Command
@@ -35,7 +35,7 @@ namespace Client
             {
                 Console.WriteLine(e.Message);
             }
-            JObject.Parse(result);
+            Console.WriteLine(result);
             
         }
 
@@ -72,7 +72,7 @@ namespace Client
         
         public static void updateUser(string url)
         {
-            Console.Write("추가할 사용자의 이름을 입력해주세요 : ");
+            Console.Write("수정할 사용자의 이름을 입력해주세요 : ");
             string UserName = Console.ReadLine();
             Console.Write("사용자의 번호를 입력해주세요 : ");
             string number = Console.ReadLine();
@@ -103,6 +103,7 @@ namespace Client
 
         public static void deleteUser(string url)
         {
+            Console.Write("삭제할 사용자의 이름을 입력해주세요 : ");
             string user = Console.ReadLine();
             url = url + "deleteUser/" + user;
 
