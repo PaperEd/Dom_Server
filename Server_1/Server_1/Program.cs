@@ -9,85 +9,17 @@ using Newtonsoft.Json.Linq;
 using System.Web;
 
 
-namespace ConsoleApp1
+namespace Server_1
 {
-    class REST
-    {
-        public static void getUser(string url) // 유저 GET
-        {
-            string result = null;
-            string user;
-            user = Console.ReadLine();
-
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "getUser/" + user);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream stream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(stream);
-                result = reader.ReadToEnd();
-                stream.Close();
-                response.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            try
-            {
-                JObject obj = JObject.Parse(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            Console.WriteLine(result);
-        }
-
-        public static void addUser(string url)
-        {
-            Console.Write("추가할 사용자의 이름을 입력해주세요 : ");
-            string UserName = Console.ReadLine();
-            Console.Write("사용자의 번호를 입력해주세요 : ");
-            string number = Console.ReadLine();
-            Console.Write("사용자가 받을 점수를 입력해주세요 :");
-            string score = Console.ReadLine();
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + "addUser/" + UserName);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = "{" +
-                                "\"number\":"+ number + "," +
-                                "\"score\":" + score +
-                              "}";
-
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-            }
-        }
-
-    }
-
+    
 
     class Program
     {
-
         static void Main(string[] args)
         {
             string url = "http://127.0.0.1:3000/";
 
-            REST.addUser(url);
+            Command.addUser(url);
         }
     }
 }

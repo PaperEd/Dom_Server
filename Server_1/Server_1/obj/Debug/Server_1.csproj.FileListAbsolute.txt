@@ -5,3 +5,7 @@ D:\Projects\C#\Dom_Server\Server_1\Server_1\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\C#\Dom_Server\Server_1\Server_1\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\C#\Dom_Server\Server_1\Server_1\obj\Debug\Server_1.exe
 D:\Projects\C#\Dom_Server\Server_1\Server_1\obj\Debug\Server_1.pdb
+D:\Projects\C#\Dom_Server\Server_1\Server_1\obj\Debug\Server_1.csprojResolveAssemblyReference.cache
+D:\Projects\C#\Dom_Server\Server_1\Server_1\bin\Debug\Json.dll
+D:\Projects\C#\Dom_Server\Server_1\Server_1\bin\Debug\System.Net.Json.dll
+D:\Projects\C#\Dom_Server\Server_1\Server_1\bin\Debug\Json.pdb
