@@ -48,7 +48,12 @@ namespace ConsoleApp1
 
         public static void addUser(string url)
         {
+            Console.Write("추가할 사용자의 이름을 입력해주세요 : ");
             string UserName = Console.ReadLine();
+            Console.Write("사용자의 번호를 입력해주세요 : ");
+            string number = Console.ReadLine();
+            Console.Write("사용자가 받을 점수를 입력해주세요 :");
+            string score = Console.ReadLine();
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + "addUser/" + UserName);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
@@ -56,8 +61,8 @@ namespace ConsoleApp1
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
                 string json = "{" +
-                                "\"number\":30," +
-                                "\"score\":10" +
+                                "\"number\":"+ number + "," +
+                                "\"score\":" + score +
                               "}";
 
                 streamWriter.Write(json);
