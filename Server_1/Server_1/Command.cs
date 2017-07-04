@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System.Net.Json;
 using System.Web;
-
+us
 namespace Client
 {
     class Command
@@ -34,8 +35,8 @@ namespace Client
             {
                 Console.WriteLine(e.Message);
             }
-
-            Console.WriteLine(result);
+            JObject.Parse(result);
+            
         }
 
         public static void addUser(string url)
