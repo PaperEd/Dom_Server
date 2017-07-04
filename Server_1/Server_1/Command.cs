@@ -7,8 +7,9 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Net.Json;
+using System.Web;
 
-namespace Server_1
+namespace Client
 {
     class Command
     {
@@ -16,8 +17,9 @@ namespace Server_1
         {
             string result = null;
             string user;
+            Console.Write("조회할 학생의 이름을 입력해주세요 : ");
             user = Console.ReadLine();
-
+            
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "getUser/" + user);
@@ -34,7 +36,6 @@ namespace Server_1
             }
 
             Console.WriteLine(result);
-
         }
 
         public static void addUser(string url)
@@ -99,6 +100,39 @@ namespace Server_1
             }
         }
 
+        public static void deleteUser(string url)
+        {
+            string user = Console.ReadLine();
+            url = url + "deleteUser/" + user;
+
+            WebRequest request = WebRequest.Create(url);
+            request.Method = "DELETE";
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+        }
+
+        public static void getallUser(string url) // 유저 GET
+        {
+            string result = null;
+            string user;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "list");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                result = reader.ReadToEnd();
+                stream.Close();
+                response.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine(result);
+        }
 
     }
 }
